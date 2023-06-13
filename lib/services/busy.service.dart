@@ -1,15 +1,20 @@
 import 'package:http/http.dart' as http;
 
 class BusyService {
-  static const String baseUrl = 'https://api.busy.com/';
+  final String baseUrl;
+  final String compCode;
+  final String userName;
+  final String password;
 
-  static Future<http.Response> executeRequest(String endpoint, Map<String, dynamic> parameters) async {
+  const BusyService({required this.baseUrl, required this.compCode, required this.userName, required this.password});
+
+  Future<http.Response> executeRequest(String endpoint, Map<String, dynamic> parameters) async {
     final url = Uri.parse(baseUrl + endpoint);
     final response = await http.post(url, body: parameters);
     return response;
   }
 
-  static Future<String> getXmlFromRecordset(String query, String username, String password) async {
+  Future<String> getXmlFromRecordset(String query, String username, String password) async {
     const endpoint = 'get-xml-from-recordset';
     final parameters = {
       'Qry': query,
@@ -25,7 +30,7 @@ class BusyService {
     }
   }
 
-  static Future<String> addVoucherFromXml(String voucherType, String voucherXml, String username, String password) async {
+  Future<String> addVoucherFromXml(String voucherType, String voucherXml, String username, String password) async {
     const endpoint = 'add-voucher-from-xml';
     final parameters = {
       'VchType': voucherType,
@@ -42,7 +47,7 @@ class BusyService {
     }
   }
 
-  static Future<String> modifyVoucherFromXmlByVoucherNo(String voucherType, String voucherXml, int modifyKey, String username, String password) async {
+  Future<String> modifyVoucherFromXmlByVoucherNo(String voucherType, String voucherXml, int modifyKey, String username, String password) async {
     const endpoint = 'modify-voucher-from-xml-by-voucher-no';
     final parameters = {
       'VchType': voucherType,
@@ -60,7 +65,7 @@ class BusyService {
     }
   }
 
-  static Future<String> modifyVoucherFromXmlByVoucherCode(String voucherType, String voucherXml, int voucherCode, String username, String password) async {
+  Future<String> modifyVoucherFromXmlByVoucherCode(String voucherType, String voucherXml, int voucherCode, String username, String password) async {
     const endpoint = 'modify-voucher-from-xml-by-voucher-code';
     final parameters = {
       'VchType': voucherType,
@@ -78,7 +83,7 @@ class BusyService {
     }
   }
 
-  static Future<String> addMasterFromXml(String masterType, String masterXml, String username, String password) async {
+  Future<String> addMasterFromXml(String masterType, String masterXml, String username, String password) async {
     const endpoint = 'add-master-from-xml';
     final parameters = {
       'MasterType': masterType,
@@ -95,7 +100,7 @@ class BusyService {
     }
   }
 
-  static Future<String> modifyMasterFromXmlByCode(String masterCode, String masterXml, String username, String password) async {
+  Future<String> modifyMasterFromXmlByCode(String masterCode, String masterXml, String username, String password) async {
     const endpoint = 'modify-master-from-xml-by-code';
     final parameters = {
       'MasterCode': masterCode,
@@ -112,7 +117,7 @@ class BusyService {
     }
   }
 
-  static Future<String> modifyMasterFromXmlByName(String masterName, String masterType, String masterXml, String username, String password) async {
+  Future<String> modifyMasterFromXmlByName(String masterName, String masterType, String masterXml, String username, String password) async {
     const endpoint = 'modify-master-from-xml-by-name';
     final parameters = {
       'MasterName': masterName,
@@ -130,7 +135,7 @@ class BusyService {
     }
   }
 
-  static Future<String> getVchXml(int voucherCode, String username, String password) async {
+  Future<String> getVchXml(int voucherCode, String username, String password) async {
     const endpoint = 'get-vch-xml';
     final parameters = {
       'VoucherCode': voucherCode,
@@ -146,7 +151,7 @@ class BusyService {
     }
   }
 
-  static Future<String> getMasterXml(int masterCode, String username, String password) async {
+  Future<String> getMasterXml(int masterCode, String username, String password) async {
     const endpoint = 'get-master-xml';
     final parameters = {
       'MasterCode': masterCode,
