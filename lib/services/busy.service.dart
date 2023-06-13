@@ -10,10 +10,10 @@ class BusyService {
   }
 
   static Future<String> getXmlFromRecordset(String query, String username, String password) async {
-    final endpoint = 'get-xml-from-recordset';
+    const endpoint = 'get-xml-from-recordset';
     final parameters = {
       'Qry': query,
-      'User Name': username,
+      'UserName': username,
       'Pwd': password,
     };
 
@@ -26,7 +26,7 @@ class BusyService {
   }
 
   static Future<String> addVoucherFromXml(String voucherType, String voucherXml, String username, String password) async {
-    final endpoint = 'add-voucher-from-xml';
+    const endpoint = 'add-voucher-from-xml';
     final parameters = {
       'VchType': voucherType,
       'VchXML': voucherXml,
@@ -43,7 +43,7 @@ class BusyService {
   }
 
   static Future<String> modifyVoucherFromXmlByVoucherNo(String voucherType, String voucherXml, int modifyKey, String username, String password) async {
-    final endpoint = 'modify-voucher-from-xml-by-voucher-no';
+    const endpoint = 'modify-voucher-from-xml-by-voucher-no';
     final parameters = {
       'VchType': voucherType,
       'VchXML': voucherXml,
@@ -61,7 +61,7 @@ class BusyService {
   }
 
   static Future<String> modifyVoucherFromXmlByVoucherCode(String voucherType, String voucherXml, int voucherCode, String username, String password) async {
-    final endpoint = 'modify-voucher-from-xml-by-voucher-code';
+    const endpoint = 'modify-voucher-from-xml-by-voucher-code';
     final parameters = {
       'VchType': voucherType,
       'VchXML': voucherXml,
@@ -79,7 +79,7 @@ class BusyService {
   }
 
   static Future<String> addMasterFromXml(String masterType, String masterXml, String username, String password) async {
-    final endpoint = 'add-master-from-xml';
+    const endpoint = 'add-master-from-xml';
     final parameters = {
       'MasterType': masterType,
       'MasterXML': masterXml,
@@ -96,7 +96,7 @@ class BusyService {
   }
 
   static Future<String> modifyMasterFromXmlByCode(String masterCode, String masterXml, String username, String password) async {
-    final endpoint = 'modify-master-from-xml-by-code';
+    const endpoint = 'modify-master-from-xml-by-code';
     final parameters = {
       'MasterCode': masterCode,
       'MasterXML': masterXml,
@@ -113,7 +113,7 @@ class BusyService {
   }
 
   static Future<String> modifyMasterFromXmlByName(String masterName, String masterType, String masterXml, String username, String password) async {
-    final endpoint = 'modify-master-from-xml-by-name';
+    const endpoint = 'modify-master-from-xml-by-name';
     final parameters = {
       'MasterName': masterName,
       'MasterType': masterType,
