@@ -1,7 +1,7 @@
 name: reetail_helper
 description: Reetail Helper Package
 version: 0.0.1
-homepage:
+homepage: https://github.com/devstroop/reetail_helper.git
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -10,11 +10,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  http: ^1.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^2.0.0
+  flutter_lints: ^2.0.1
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
