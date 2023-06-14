@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:http/http.dart' as http;
+import 'package:flutter_busylib/utils/http.util.dart';
 
 import '../types/http_method.type.dart';
 
@@ -16,34 +16,6 @@ class BusyService {
       required this.username,
       required this.password});
 
-
-  Future<http.Response> executeAPIRequest({
-    HttpMethod method = HttpMethod.get,
-    String? path,
-    Map<String, String>? headers,
-    Map<String, dynamic>? body,
-    Encoding? encoding,
-  }) async {
-    final url = Uri.parse(baseUrl + (path ?? ''));
-    final response = method == HttpMethod.get
-        ? await http.post(url, headers: headers, body: body, encoding: encoding)
-        : await http.get(url, headers: headers);
-
-    final resultHeader = response.headers['Result'];
-    if (resultHeader == 'F') {
-      final descriptionHeader = response.headers['Description'];
-      throw Exception(descriptionHeader);
-    } else if (resultHeader == 'T') {
-      if (response.statusCode == 200) {
-        return response;
-      } else {
-        throw Exception('Invalid status code in response');
-      }
-    } else {
-      throw Exception('Unspecified \'Result\' in response header');
-    }
-  }
-
   Future openCompany() async {
     final parameters = {
       'SC': '51', // Open company
@@ -52,9 +24,8 @@ class BusyService {
       'Pwd': password,
     };
 
-    final response = await executeAPIRequest(
-        headers: parameters
-    );
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   }
 
@@ -62,9 +33,8 @@ class BusyService {
     final parameters = {
       'SC': '52', // Close company
     };
-    final response = await executeAPIRequest(
-        headers: parameters
-    );
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   }
 
@@ -76,7 +46,8 @@ class BusyService {
       'Qry': query,
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
 
@@ -90,7 +61,8 @@ class BusyService {
       'VchXML': voucherXml,
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
 
@@ -105,7 +77,8 @@ class BusyService {
       'ModifyKey': '$modifyKey',
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
 
@@ -120,7 +93,8 @@ class BusyService {
       'VoucherCode': '$voucherCode',
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
 
@@ -133,7 +107,8 @@ class BusyService {
       'MasterXML': masterXml,
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
 
@@ -147,7 +122,8 @@ class BusyService {
       'MasterXML': masterXml,
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
 
@@ -162,9 +138,9 @@ class BusyService {
       'MasterXML': masterXml,
     };
 
-    final response = await executeAPIRequest(headers: parameters);
+    final response =
+        await HttpUtil.get(url: baseUrl, headers: parameters);
     return response.body;
   } // OK
-  // Voucher
-
+// Voucher
 }
