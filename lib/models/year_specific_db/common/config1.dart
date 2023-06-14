@@ -1,15 +1,15 @@
-class Config {
+class Config1 {
   String? recType;
   String? type;
   int? noOfFld;
 
-  Config({
+  Config1({
     this.recType,
     this.type,
     this.noOfFld,
   });
 
-  factory Config.fromXmlString(String xmlString) {
+  factory Config1.fromXmlString(String xmlString) {
     final regex = RegExp(r'<(\w+)>(.*?)<\/\w+>');
     final matches = regex.allMatches(xmlString);
 
@@ -20,22 +20,22 @@ class Config {
       if (key != null) map[key] = value;
     }
 
-    return Config.fromMap(map);
+    return Config1.fromMap(map);
   }
 
   String toXmlString() {
     final buffer = StringBuffer();
-    buffer.write('<Config>');
+    buffer.write('<Config1>');
     buffer.write('<RecType>$recType</RecType>');
     buffer.write('<Type>$type</Type>');
     buffer.write('<NoOfFld>$noOfFld</NoOfFld>');
-    buffer.write('</Config>');
+    buffer.write('</Config1>');
     return buffer.toString();
   }
 
 
-  factory Config.fromMap(Map<String, dynamic> map) {
-    return Config(
+  factory Config1.fromMap(Map<String, dynamic> map) {
+    return Config1(
       recType: map['RecType'],
       type: map['Type'],
       noOfFld: map['NoOfFld'],

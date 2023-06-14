@@ -44,10 +44,6 @@ class BusyService {
     }
   }
 
-
-
-
-
   Future openCompany() async {
     final parameters = {
       'SC': '51', // Open company
@@ -61,6 +57,7 @@ class BusyService {
     );
     return response.body;
   }
+
   Future closeCompany() async {
     final parameters = {
       'SC': '52', // Close company
@@ -73,7 +70,7 @@ class BusyService {
 
   Future<String> getRecordsetFromXML(String query) async {
     final parameters = {
-      'SC': '1',
+      'SC': '1', // Get Recordset
       'UserName': username,
       'Pwd': password,
       'Qry': query,
@@ -83,27 +80,10 @@ class BusyService {
     return response.body;
   } // OK
 
-  // Voucher
-
-  Future<String> getVchXml(int voucherCode) async {
-    final parameters = {
-      'UserName': username,
-      'Pwd': password,
-      'VoucherCode': '$voucherCode',
-    };
-
-    final response = await executeAPIRequest(headers: parameters);
-    if (response.statusCode == 200) {
-      return response.body;
-    } else {
-      throw Exception('Failed to get voucher XML');
-    }
-  } // Non working
-
   Future<String> addVoucherFromXml(
       String voucherType, String voucherXml) async {
     final parameters = {
-      'SC': '2',
+      'SC': '2', // Add Voucher
       'UserName': username,
       'Pwd': password,
       'VchType': voucherType,
@@ -143,19 +123,6 @@ class BusyService {
     final response = await executeAPIRequest(headers: parameters);
     return response.body;
   } // OK
-
-
-  // Master
-  Future<String> getMasterXml(int masterCode) async {
-    final parameters = {
-      'UserName': username,
-      'Pwd': password,
-      'MasterCode': '$masterCode',
-    };
-
-    final response = await executeAPIRequest(headers: parameters);
-    return response.body;
-  } // Non working
 
   Future<String> addMasterFromXml(String masterType, String masterXml) async {
     final parameters = {
@@ -198,5 +165,33 @@ class BusyService {
     final response = await executeAPIRequest(headers: parameters);
     return response.body;
   } // OK
+  // Voucher
+
+  // Non working
+  Future<String> getVchXml(int voucherCode) async {
+    final parameters = {
+      'UserName': username,
+      'Pwd': password,
+      'VoucherCode': '$voucherCode',
+    };
+
+    final response = await executeAPIRequest(headers: parameters);
+    if (response.statusCode == 200) {
+      return response.body;
+    } else {
+      throw Exception('Failed to get voucher XML');
+    }
+  } // Non working
+  Future<String> getMasterXml(int masterCode) async {
+    final parameters = {
+      'UserName': username,
+      'Pwd': password,
+      'MasterCode': '$masterCode',
+    };
+
+    final response = await executeAPIRequest(headers: parameters);
+    return response.body;
+  } // Non working
+
 
 }
