@@ -32,12 +32,12 @@ class CommonDB{
   final BusyService service;
   CommonDB(this.service);
   CompanyProvider get companyProvider => CompanyProvider(service);
-  PrinterRepsProvider get printerRepsProvider => PrinterRepsProvider();
+  PrinterRepsProvider get printerRepsProvider => PrinterRepsProvider(service);
   ScreenRepsProvider get screenRepsProvider => ScreenRepsProvider();
-  StdNarProvider get stdNarProvider => StdNarProvider();
-  UserLogProvider get userLogProvider => UserLogProvider();
-  UserPreferenceProvider get userPreferenceProvider => UserPreferenceProvider();
-  UserPreference1Provider get userPreference1Provider => UserPreference1Provider();
+  StdNarProvider get stdNarProvider => StdNarProvider(service);
+  UserLogProvider get userLogProvider => UserLogProvider(service);
+  UserPreferenceProvider get userPreferenceProvider => UserPreferenceProvider(service);
+  UserPreference1Provider get userPreference1Provider => UserPreference1Provider(service);
 }
 class YearSpecificDB{
   final BusyService service;

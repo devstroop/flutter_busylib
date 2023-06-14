@@ -9,7 +9,7 @@ class CompanyProvider {
     try {
       final xml = await service.getRecordsetFromXML('SELECT * FROM Company');
       final parsedData = parseXml(xml);
-      return Company.fromXml(parsedData);
+      return Company.fromMap(parsedData);
     } catch (error) {
       throw Exception('Failed to fetch company details: $error');
     }
