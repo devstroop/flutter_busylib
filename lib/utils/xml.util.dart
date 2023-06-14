@@ -6,7 +6,6 @@ Map<String, dynamic> parseXml(String xml) {
 
   final result = <String, dynamic>{};
 
-  // Iterate over the child elements of the root element
   for (final child in root.children) {
     if (child is XmlElement) {
       final key = child.name.local;
@@ -14,7 +13,6 @@ Map<String, dynamic> parseXml(String xml) {
       result[key] = value;
     }
   }
-
   return result;
 }
 
