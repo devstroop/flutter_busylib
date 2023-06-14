@@ -10,23 +10,23 @@ import 'package:flutter_busylib/providers/common_db/user_preference1.provider.da
 import 'package:flutter_busylib/services/busy.service.dart';
 
 class BusyLib{
-  final String baseUrl;
-  final String compCode;
-  final String username;
-  final String password;
+  final String _baseUrl;
+  final String _compCode;
+  final String _username;
+  final String _password;
 
-  BusyService? busyService;
-  BusyLib({required this.baseUrl, required this.compCode, required this.username, required this.password});
+  BusyService? _busyService;
+  BusyLib({required String baseUrl, required String compCode, required String username, required String password}) : _password = password, _username = username, _compCode = compCode, _baseUrl = baseUrl;
   openDB(){
-    busyService = BusyService(baseUrl: baseUrl, compCode: compCode, username: username, password: password);
+    _busyService = BusyService(baseUrl: _baseUrl, compCode: _compCode, username: _username, password: _password);
   }
   closeDB(){
-    busyService?.closeCompany();
-    busyService = null;
+    _busyService?.closeCompany();
+    _busyService = null;
   }
 
-  CommonDB? get commonDB => busyService != null ? CommonDB(busyService!) : null;
-  YearSpecificDB? get yearSpecificDB => busyService != null ? YearSpecificDB(busyService!) : null;
+  CommonDB? get commonDB => _busyService != null ? CommonDB(_busyService!) : null;
+  YearSpecificDB? get yearSpecificDB => _busyService != null ? YearSpecificDB(_busyService!) : null;
 }
 class CommonDB{
   final BusyService service;
