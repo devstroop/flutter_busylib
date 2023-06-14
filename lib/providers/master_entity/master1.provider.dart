@@ -10,8 +10,8 @@ class Master1Provider {
   Future<List<Master1>> getAll({int limit = 10}) async {
     List<Master1> result = [];
     try {
-      debugPrint('SELECT ${Master1().toMap().keys.join(', ')} FROM Master1 LIMIT $limit;');
-      final xml = await service.getRecordsetFromXML('SELECT ${Master1().toMap().keys.join(', ')} FROM Master1 LIMIT $limit;');
+      String qry = 'SELECT ${Master1().toMap().keys.join(', ')} FROM Master1 LIMIT $limit;';
+      final xml = await service.getRecordsetFromXML(qry);
       debugPrint(xml);
       //final parsedData = parseXml(xml);
       //result.add(Master1.fromMap(parsedData));
