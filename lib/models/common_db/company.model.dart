@@ -35,28 +35,28 @@ class Company {
     this.received,
   });
 
-  factory Company.fromXml(Map<String, dynamic> xml) {
+  factory Company.fromMap(Map<String, dynamic> map) {
     return Company(
-      name: xml['Name'],
-      printName: xml['PrintName'],
-      address1: xml['Address1'],
-      address2: xml['Address2'],
-      address3: xml['Address3'],
-      address4: xml['Address4'],
-      begFY: xml['BegFY'],
-      curFY: xml['CurFY'],
-      booksStart: xml['BooksStart'],
-      freezeDate: xml['FreezDate'],
-      lstNo: xml['LSTNo'],
-      cstNo: xml['CSTNo'],
-      createdOn: xml['CreatedOn'],
-      major: xml['Major'],
-      minor: xml['Minor'],
-      received: xml['Received'],
+      name: map['Name'],
+      printName: map['PrintName'],
+      address1: map['Address1'],
+      address2: map['Address2'],
+      address3: map['Address3'],
+      address4: map['Address4'],
+      begFY: map['BegFY'],
+      curFY: map['CurFY'],
+      booksStart: map['BooksStart'],
+      freezeDate: map['FreezDate'],
+      lstNo: map['LSTNo'],
+      cstNo: map['CSTNo'],
+      createdOn: map['CreatedOn'],
+      major: map['Major'],
+      minor: map['Minor'],
+      received: map['Received'],
     );
   }
 
-  Map<String, dynamic> toXml() {
+  Map<String, dynamic> toMap() {
     return {
       'Name': name,
       'PrintName': printName,

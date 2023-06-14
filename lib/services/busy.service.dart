@@ -16,28 +16,6 @@ class BusyService {
       required this.username,
       required this.password});
 
-  Future openCompany() async {
-    final parameters = {
-      'SC': '51', // Open company
-      'CompCode': compCode,
-      'UserName': username,
-      'Pwd': password,
-    };
-
-    final response = await executeAPIRequest(
-      headers: parameters
-    );
-    return response.body;
-  }
-  Future closeCompany() async {
-    final parameters = {
-      'SC': '52', // Close company
-    };
-    final response = await executeAPIRequest(
-      headers: parameters
-    );
-    return response.body;
-  }
 
   Future<http.Response> executeAPIRequest({
     HttpMethod method = HttpMethod.get,
@@ -64,6 +42,33 @@ class BusyService {
     } else {
       throw Exception('Unspecified \'Result\' in response header');
     }
+  }
+
+
+
+
+
+  Future openCompany() async {
+    final parameters = {
+      'SC': '51', // Open company
+      'CompCode': compCode,
+      'UserName': username,
+      'Pwd': password,
+    };
+
+    final response = await executeAPIRequest(
+        headers: parameters
+    );
+    return response.body;
+  }
+  Future closeCompany() async {
+    final parameters = {
+      'SC': '52', // Close company
+    };
+    final response = await executeAPIRequest(
+        headers: parameters
+    );
+    return response.body;
   }
 
   Future<String> getRecordsetFromXML(String query) async {
