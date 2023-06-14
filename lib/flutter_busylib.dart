@@ -1,7 +1,10 @@
 library flutter_busylib;
 
 import 'package:flutter_busylib/providers/master_entity/folio1.provider.dart';
+import 'package:flutter_busylib/providers/master_entity/master1.provider.dart';
 import 'package:flutter_busylib/services/busy.service.dart';
+
+import 'models/master_entity/master1.dart';
 
 class BusyLib{
   final String _baseUrl;
@@ -22,6 +25,7 @@ class BusyLib{
     _busyService = null;
   }
 
-  Folio1Provider? get commonDB => _busyService != null ? Folio1Provider(_busyService!) : null;
+  Folio1Provider? get folio1Provider => _busyService != null ? Folio1Provider(_busyService!) : null;
+  Master1Provider? get master1Provider => _busyService != null ? Master1Provider(_busyService!) : null;
 
 }
