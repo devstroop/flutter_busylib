@@ -35,6 +35,44 @@ class Company {
     this.received,
   });
 
+  factory Company.fromXmlString(String xmlString) {
+    final regex = RegExp(r'<(\w+)>(.*?)<\/\w+>');
+    final matches = regex.allMatches(xmlString);
+
+    final map = <String, dynamic>{};
+    for (final match in matches) {
+      final key = match.group(1);
+      final value = match.group(2);
+      if(key!=null)
+      map[key] = value;
+    }
+
+    return Company.fromMap(map);
+  }
+
+  String toXmlString() {
+    final buffer = StringBuffer();
+    buffer.write('<Company>');
+    buffer.write('<Name>$name</Name>');
+    buffer.write('<PrintName>$printName</PrintName>');
+    buffer.write('<Address1>$address1</Address1>');
+    buffer.write('<Address2>$address2</Address2>');
+    buffer.write('<Address3>$address3</Address3>');
+    buffer.write('<Address4>$address4</Address4>');
+    buffer.write('<BegFY>$begFY</BegFY>');
+    buffer.write('<CurFY>$curFY</CurFY>');
+    buffer.write('<BooksStart>$booksStart</BooksStart>');
+    buffer.write('<FreezDate>$freezeDate</FreezDate>');
+    buffer.write('<LSTNo>$lstNo</LSTNo>');
+    buffer.write('<CSTNo>$cstNo</CSTNo>');
+    buffer.write('<CreatedOn>$createdOn</CreatedOn>');
+    buffer.write('<Major>$major</Major>');
+    buffer.write('<Minor>$minor</Minor>');
+    buffer.write('<Received>$received</Received>');
+    buffer.write('</Company>');
+    return buffer.toString();
+  }
+
   factory Company.fromMap(Map<String, dynamic> map) {
     return Company(
       name: map['Name'],
