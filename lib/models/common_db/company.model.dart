@@ -43,8 +43,9 @@ class Company {
     for (final match in matches) {
       final key = match.group(1);
       final value = match.group(2);
-      if(key!=null)
-      map[key] = value;
+      if(key!=null) {
+        map[key] = value;
+      }
     }
 
     return Company.fromMap(map);
