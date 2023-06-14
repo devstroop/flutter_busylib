@@ -10,9 +10,9 @@ class HttpUtil{
     final uri = Uri.parse(url);
     final response = await http.get(uri, headers: headers);
 
-    final resultHeader = response.headers['Result'];
+    final resultHeader = response.headers['result'];
     if (resultHeader == 'F') {
-      final descriptionHeader = response.headers['Description'];
+      final descriptionHeader = response.headers['description'];
       throw Exception(descriptionHeader);
     } else if (resultHeader == 'T') {
       if (response.statusCode == 200) {
@@ -33,9 +33,9 @@ class HttpUtil{
     final uri = Uri.parse(url);
     final response = await http.post(uri, headers: headers, body: body, encoding: encoding);
 
-    final resultHeader = response.headers['Result'];
+    final resultHeader = response.headers['result'];
     if (resultHeader == 'F') {
-      final descriptionHeader = response.headers['Description'];
+      final descriptionHeader = response.headers['description'];
       throw Exception(descriptionHeader);
     } else if (resultHeader == 'T') {
       if (response.statusCode == 200) {
