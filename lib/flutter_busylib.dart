@@ -15,10 +15,13 @@ class BusyLib{
   final String _username;
   final String _password;
 
-  BusyService? _busyService;
+  late BusyService? _busyService;
+  
   BusyLib({required String baseUrl, required String compCode, required String username, required String password}) : _password = password, _username = username, _compCode = compCode, _baseUrl = baseUrl;
+  
   openDB(){
     _busyService = BusyService(baseUrl: _baseUrl, compCode: _compCode, username: _username, password: _password);
+    _busyService?.openCompany();
   }
   closeDB(){
     _busyService?.closeCompany();
@@ -42,4 +45,5 @@ class CommonDB{
 class YearSpecificDB{
   final BusyService service;
   YearSpecificDB(this.service);
+  
 }
