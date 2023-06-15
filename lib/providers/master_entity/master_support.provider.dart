@@ -8,27 +8,19 @@ class MasterSupportProvider {
   final BusyService service;
 
   MasterSupportProvider(this.service);
-
-  Future<Object> getAll({int limit = 10}) async {
-    List<MasterSupport> result = [];
+  Future<List<MasterSupport>> getAllList({int limit = 10}) async {
+    List<MasterSupport> masterSupportList = [];
     try {
-      String query = 'SELECT ${MasterSupport().toMap().keys.join(', ')} FROM MasterSupport LIMIT $limit;';
-      final xml = await service.getRecordsetFromXML(query);
-      debugPrint(xml);
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${MasterSupport().toMap().keys.join(', ')} FROM MasterSupport LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return MasterSupport.fromMap(parsedData);
-      // if (parsedData is List<dynamic>) {
-      //   for (var item in parsedData) {
-      //     if (item is Map<String, dynamic>) {
-      //       result.add(MasterSupport.fromMap(item));
-      //     }
-      //   }
-      // } else if (parsedData is Map<String, dynamic>) {
-      //   result.add(MasterSupport.fromMap(parsedData));
-      // }
+      for (var i = 0; i < parsedData.length; i++) {
+        masterSupportList.add(MasterSupport.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch master support details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
-    return result;
+
+    return masterSupportList;
   }
 }

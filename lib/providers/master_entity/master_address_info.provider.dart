@@ -8,13 +8,20 @@ class MasterAddressInfoProvider {
 
   MasterAddressInfoProvider(this.service);
 
-  Future<MasterAddressInfo> getAll({int limit = 10}) async {
+  Future<List<MasterAddressInfo>> getAllList({int limit = 10}) async {
+    List<MasterAddressInfo> masterAddressInfoList = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${MasterAddressInfo().toMap().keys.join(', ')} FROM MasterAddressInfo LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${MasterAddressInfo().toMap().keys.join(', ')} FROM MasterAddressInfo LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return MasterAddressInfo.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        masterAddressInfoList
+            .add(MasterAddressInfo.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch master address info: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return masterAddressInfoList;
   }
 }
