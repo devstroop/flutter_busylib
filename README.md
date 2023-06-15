@@ -1,39 +1,46 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+# flutter_busylib
+flutter_busylib is a Flutter package that provides a set of classes to interact with a Busy accounting software server. It includes providers for various master entities and folios.
 
 ## Usage
+To use flutter_busylib, you need to create an instance of the BusyLib class by providing the following parameters:
+- baseUrl: The base URL of the Busy server.
+- compCode: The company code of the Busy server.
+- username: The username to authenticate with the Busy server.
+- password: The password to authenticate with the Busy server.
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+```
+    final busyLib = BusyLib(
+      'https://example.com',
+      'COMPANY_CODE',
+      'USERNAME',
+      'PASSWORD',
+    );
+```
+Once you have an instance of BusyLib, you can use it to open and close the company, and get providers for various master entities and folios.
 
-```dart
-const like = 'sample';
+```
+await busyLib.open();
+
+final folio1Provider = busyLib.folio1Provider;
+final master1Provider = busyLib.master1Provider;
+
+// Use the providers to interact with the server
+
+await busyLib.close();
 ```
 
-## Additional information
+## Providers
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+`flutter_busylib` includes providers for the following master entities and folios:
+
+- `Folio1Provider`
+- `Master1Provider`
+
+## Contributing
+
+Contributions to `flutter_busylib` are welcome! If you find a bug or want to add a new feature, please open an issue or a pull request on the [GitHub repository](https://github.com/flutter-busy/flutter_busylib).
+
+## License
+
+`flutter_busylib` is released under the MIT License. See [LICENSE](https://github.com/flutter-busy/flutter_busylib/blob/main/LICENSE) for details.
+
