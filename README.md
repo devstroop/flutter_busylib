@@ -1,5 +1,5 @@
 # flutter_busylib
-flutter_busylib is a Flutter package that provides a set of classes to interact with a Busy accounting software server. It includes providers for various master entities and folios.
+flutter_busylib is a Flutter package that provides a set of classes to interact with a Busy accounting software server. It includes models and providers for various master and transaction entities.
 
 ## Usage
 To use flutter_busylib, you need to create an instance of the BusyLib class by providing the following parameters:
