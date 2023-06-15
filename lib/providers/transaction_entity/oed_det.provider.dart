@@ -7,13 +7,19 @@ class OEDDetProvider {
 
   OEDDetProvider(this.service);
 
-  Future<OEDDet> getAll({int limit = 10}) async {
+  Future<List<OEDDet>> getAllList({int limit = 10}) async {
+    List<OEDDet> oedDetList = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${OEDDet().toMap().keys.join(', ')} FROM OEDDet LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${OEDDet().toMap().keys.join(', ')} FROM OEDDet LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return OEDDet.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        oedDetList.add(OEDDet.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch OEDDet details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return oedDetList;
   }
 }

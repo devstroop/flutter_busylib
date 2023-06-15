@@ -8,13 +8,19 @@ class VatInfoProvider {
 
   VatInfoProvider(this.service);
 
-  Future<VatInfo> getAll({int limit = 10}) async {
+  Future<List<VatInfo>> getAllList({int limit = 10}) async {
+    List<VatInfo> vatInfoList = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${VatInfo().toMap().keys.join(', ')} FROM VatInfo LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${VatInfo().toMap().keys.join(', ')} FROM VatInfo LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return VatInfo.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        vatInfoList.add(VatInfo.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch VatInfo details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return vatInfoList;
   }
 }

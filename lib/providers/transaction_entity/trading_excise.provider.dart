@@ -7,13 +7,19 @@ class TradingExciseProvider {
 
   TradingExciseProvider(this.service);
 
-  Future<TradingExcise> getAll({int limit = 10}) async {
+  Future<List<TradingExcise>> getAllList({int limit = 10}) async {
+    List<TradingExcise> tradingExciseList = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${TradingExcise().toMap().keys.join(', ')} FROM TradingExcise LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${TradingExcise().toMap().keys.join(', ')} FROM TradingExcise LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return TradingExcise.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        tradingExciseList.add(TradingExcise.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch TradingExcise details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return tradingExciseList;
   }
 }

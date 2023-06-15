@@ -8,13 +8,19 @@ class Transaction8Provider {
 
   Transaction8Provider(this.service);
 
-  Future<Transaction8> getAll({int limit = 10}) async {
+  Future<List<Transaction8>> getAllList({int limit = 10}) async {
+    List<Transaction8> transaction8List = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${Transaction8().toMap().keys.join(', ')} FROM Transaction8 LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${Transaction8().toMap().keys.join(', ')} FROM Transaction8 LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return Transaction8.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        transaction8List.add(Transaction8.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch Transaction8 details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return transaction8List;
   }
 }

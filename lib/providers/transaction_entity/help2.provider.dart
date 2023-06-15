@@ -7,13 +7,19 @@ class Help2Provider {
 
   Help2Provider(this.service);
 
-  Future<Help2> getAll({int limit = 10}) async {
+  Future<List<Help2>> getAllList({int limit = 10}) async {
+    List<Help2> help2List = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${Help2().toMap().keys.join(', ')} FROM Help2 LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${Help2().toMap().keys.join(', ')} FROM Help2 LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return Help2.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        help2List.add(Help2.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch Help2 details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return help2List;
   }
 }

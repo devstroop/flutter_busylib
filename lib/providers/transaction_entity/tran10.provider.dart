@@ -8,13 +8,19 @@ class Transaction10Provider {
 
   Transaction10Provider(this.service);
 
-  Future<Transaction10> getAll({int limit = 10}) async {
+  Future<List<Transaction10>> getAllList({int limit = 10}) async {
+    List<Transaction10> transaction10List = [];
     try {
-      final xml = await service.getRecordsetFromXML('SELECT ${Transaction10().toMap().keys.join(', ')} FROM Transaction10 LIMIT $limit;');
+      final xml = await service.getRecordsetFromXML(
+          'SELECT ${Transaction10().toMap().keys.join(', ')} FROM Transaction10 LIMIT $limit;');
       final parsedData = parseXml(xml);
-      return Transaction10.fromMap(parsedData);
+      for (var i = 0; i < parsedData.length; i++) {
+        transaction10List.add(Transaction10.fromMap(parsedData[i]));
+      }
     } catch (error) {
-      throw Exception('Failed to fetch Transaction10 details: $error');
+      throw Exception('Failed to fetch company details: $error');
     }
+
+    return transaction10List;
   }
 }
