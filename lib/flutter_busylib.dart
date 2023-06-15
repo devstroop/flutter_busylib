@@ -18,7 +18,7 @@ class BusyLib{
   
   Future? open() => _busyService?.openCompany();
   Future? close() => _busyService?.closeCompany();
-  Future? dispose() => _busyService = null;
+  void dispose() => _busyService = null;
 
   Folio1Provider? get folio1Provider => _busyService != null ? Folio1Provider(_busyService!) : null;
   Master1Provider? get master1Provider => _busyService != null ? Master1Provider(_busyService!) : null;
