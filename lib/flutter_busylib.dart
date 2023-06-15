@@ -22,5 +22,5 @@ class BusyLib{
 
   Folio1Provider? get folio1Provider => _busyService != null ? Folio1Provider(_busyService!) : null;
   Master1Provider? get master1Provider => _busyService != null ? Master1Provider(_busyService!) : null;
-
+  // Add other providers
 }
