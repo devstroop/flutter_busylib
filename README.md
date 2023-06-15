@@ -29,17 +29,46 @@ final master1Provider = busyLib.master1Provider;
 await busyLib.close();
 ```
 
+## Models
+`flutter_busylib` includes models for the following:
+
+### Master Entiry Model
+    - Folio1
+    - Help1
+    - Master1
+    - MasterAddressInfo
+    - MasterSupport
+
+### Transaction Entiry Model
+    - BillingDet
+    - DeletedInfo
+    - Help2
+    - OedDet
+    - TradingExcise
+    - Tran1
+    - Tran2
+    - Tran3
+    - Tran4
+    - Tran5
+    - Tran6
+    - Tran7
+    - Tran8
+    - Tran9
+    - Tran10
+    - VatInfo
+    - VchOtherInfo
+    
 ## Providers
 `flutter_busylib` includes providers for the following:
 
-### Master Entiry
+### Master Entiry Provider
     - Folio1Provider
     - Help1Provider
     - Master1Provider
     - MasterAddressInfoProvider
     - MasterSupportProvider
 
-### Transaction Entiry
+### Transaction Entiry Provider
     - BillingDetProvider
     - DeletedInfoProvider
     - Help2Provider
