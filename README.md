@@ -33,30 +33,30 @@ await busyLib.close();
 `flutter_busylib` includes providers for the following:
 
 ### Master Entiry
-    - `Folio1Provider`
-    - `Help1Provider`
-    - `Master1Provider`
-    - `MasterAddressInfoProvider`
-    - `MasterSupportProvider`
+    - Folio1Provider
+    - Help1Provider
+    - Master1Provider
+    - MasterAddressInfoProvider
+    - MasterSupportProvider
 
 ### Transaction Entiry
-    - `BillingDetProvider`
-    - `DeletedInfoProvider`
-    - `Help2Provider`
-    - `OedDetProvider`
-    - `TradingExciseProvider`
-    - `Tran1Provider`
-    - `Tran2Provider`
-    - `Tran3Provider`
-    - `Tran4Provider`
-    - `Tran5Provider`
-    - `Tran6Provider`
-    - `Tran7Provider`
-    - `Tran8Provider`
-    - `Tran9Provider`
-    - `Tran10Provider`
-    - `VatInfoProvider`
-    - `VchOtherInfoProvider`
+    - BillingDetProvider
+    - DeletedInfoProvider
+    - Help2Provider
+    - OedDetProvider
+    - TradingExciseProvider
+    - Tran1Provider
+    - Tran2Provider
+    - Tran3Provider
+    - Tran4Provider
+    - Tran5Provider
+    - Tran6Provider
+    - Tran7Provider
+    - Tran8Provider
+    - Tran9Provider
+    - Tran10Provider
+    - VatInfoProvider
+    - VchOtherInfoProvider
     
 ## Contributing
 Contributions to `flutter_busylib` are welcome! If you find a bug or want to add a new feature, please open an issue or a pull request on the [GitHub repository](https://github.com/flutter-busy/flutter_busylib).
