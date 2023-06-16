@@ -1,2 +1,1 @@
-enum MasterType{
-}
+enum MasterType { sundryDebtor }
